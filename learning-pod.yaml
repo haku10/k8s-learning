@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-ts-deployment
+  labels: 
+    app: react-ts
+spec:
+  replicas: 2
+  template: 
+    metadata:
+      name: react-ts
+      labels:
+        app: react-ts
+    spec: 
+      containers:
+      - name: operation-app-ts
+        image: masa5678/operation-app-ts_react-app_1:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector: 
+    matchLabels:
+      app: react-ts
